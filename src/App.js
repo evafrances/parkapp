@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Switch, Route } from 'react-router-dom';
+import Home from './components/Home';
+import axios from 'axios';
 import './App.css';
+import Park from './components/Park';
+import Parking from './components/Parking';
+// import User from './components/User';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        
+        <main className="container">
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path="/parking" component={Parking}/>
+          <Route path="/parking/:id" component={Park}/>
+          {/* <Route path="/profile" component={User}/> */}
+          {/* <Route path="/new" component={New}/> */}
+        </Switch>
+        </main>
+        {/* <Map google={this.props.google} zoom={14}>
+ 
+        <Marker onClick={this.onMarkerClick}
+                name={'Current location'} />
+ 
+        <InfoWindow onClose={this.onInfoWindowClose}>
+            <div>
+              <h1>{this.state.selectedPlace.name}</h1>
+            </div>
+        </InfoWindow>
+      </Map> */}
     </div>
   );
+  
 }
 
 export default App;

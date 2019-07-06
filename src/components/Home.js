@@ -32,20 +32,18 @@ class Home extends Component{
           <Header/>
           <p>Parking for your vehicles</p>
         <ul>
-        {this.state.parking.map((e,i)=>
-        { let title = e.title.replace('Aparcamiento público.', '')
-          title = title.replace('Aparcamiento mixto.', '')
-          return (
-          <li key={i} className="list-group-item d-flex justify-content-between align-items-center">
+        {this.state.parking.map((e,i)=>(
+          <li key={i} className="list-group-item d-flex justify-content-between align-items-center"> 
               <div className="flex-column">
-                {title}
+                
+                <Link key={i} to={"/parking/:id/"+i}>{e.name}</Link>
               </div>
               
             {/* //   <div className="image-parent">
             //       <img src={e.image_url} className="img-fluid" alt={e.name} style={{maxWidth:'30px'}} />
             //   </div> */}
           </li>
-          )})}
+          ))}
         </ul>
         </div>
       </article>

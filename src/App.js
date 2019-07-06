@@ -3,8 +3,11 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import axios from 'axios';
 import './App.css';
-import Park from './components/Park';
+import DetailsP from './components/parkings/DetailsP';
 import Parking from './components/Parking';
+import WhereGApi from './components/misc/WhereGApi';
+import User from './components/misc/User';
+
 // import User from './components/User';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
@@ -17,8 +20,9 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path="/parking" component={Parking}/>
-          <Route path="/parking/:id" component={Park}/>
-          {/* <Route path="/profile" component={User}/> */}
+          <Route path="/parking/WhereGApi" component={WhereGApi}/>
+          <Route path="/parking/:id" component={DetailsP}/>
+          <Route path="/profile" component={User}/>
           {/* <Route path="/new" component={New}/> */}
         </Switch>
         </main>

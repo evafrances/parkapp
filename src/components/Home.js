@@ -36,7 +36,7 @@ class Home extends Component{
           <li key={i} className="list-group-item d-flex justify-content-between align-items-center"> 
               <div className="flex-column">
                 
-                <Link key={i} to={"/parking/:id/"+i}>{e.name}</Link>
+                <Link key={i} to={`/parking/${e.id}/`}>{e.name}</Link>
               </div>
               
             {/* //   <div className="image-parent">

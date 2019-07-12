@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
+import './nav.css';
 import Header from './misc/Header';
 import { Link } from 'react-router-dom';
 import ParkingService from '../services/ParkingService';
+import { Row, Col } from 'antd';
+import './parkings.css';
+
 
 class Home extends Component{
   state = {
@@ -25,24 +29,28 @@ class Home extends Component{
 
   render(){
     return (
+
+      
+
       <article className="Home">
         <div className="jumbotron container">
+        <div className="div-header">
           <h1 className="display-4">Move with freedom</h1>
-          <p className="lead">Explore, dreams, discover</p>
-          <Header/>
+            <Header/>
+          </div>
           <p>Parking for your vehicles</p>
-        <ul>
+        <ul className="ul-parkingsix">
         {this.state.parking.map((e,i)=>(
-          <li key={i} className="list-group-item d-flex justify-content-between align-items-center"> 
-              <div className="flex-column">
-                
-                <Link key={i} to={`/parking/${e.id}/`}>{e.name}</Link>
-              </div>
+          <div className="li-parkingsix">
+              <li key={i}> 
+                  <Link key={i} to={`/parking/${e.id}/`}>{e.name}</Link>
+              
               
             {/* //   <div className="image-parent">
             //       <img src={e.image_url} className="img-fluid" alt={e.name} style={{maxWidth:'30px'}} />
             //   </div> */}
-          </li>
+              </li>
+          </div>
           ))}
         </ul>
         </div>
@@ -52,3 +60,4 @@ class Home extends Component{
 }
 
 export default Home
+

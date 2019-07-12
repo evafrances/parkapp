@@ -1,0 +1,28 @@
+
+.div-header{
+    background-color: wheat;
+}
+.ant-breadcrumb {
+    padding: 24px;
+}
+.icon-nav {
+    color: white;
+}
+.ant-breadcrumb .icon-nav{
+    font-size: 22px;
+}
+.ant-breadcrumb a {
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.45);
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    padding: 20px 11px;
+}
+.anticon svg {
+    display: inline-block;
+    font-size: 22px;
+}
+.ant-breadcrumb-link > .anticon + span {
+    margin-left: 4px;
+    display: block;
+}

@@ -1,0 +1,21 @@
+.li-parkingsix{
+    list-style:none;
+    float: left;
+}
+.li-parkingsix a {
+    color: #1890ff;
+    width: 100px;
+    height: 100px;
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    -webkit-text-decoration-skip: objects;
+}
+.ant-card-body {
+    padding: 24px;
+    zoom: 1;
+    text-align: left;
+}

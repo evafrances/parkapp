@@ -17,11 +17,11 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 function App() {
   return (
     <div className="App">
-        
         <main className="container">
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route exact path="/login" component={Register}/>
+          <Route exact path="/login" component={Login}/>
+          <Route exact path="/register" component={Register}/>
           <Route path="/parking" component={Parking}/>
           <Route path="/parking/WhereGApi" component={WhereGApi}/>
           <Route path="/parking/:id" component={DetailsP}/>

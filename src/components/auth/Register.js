@@ -1,42 +1,103 @@
-import React, { Component } from 'react'
-import FormField from '../misc/FormField';
-import AuthService from '../../services/AuthService';
-import { Redirect } from 'react-router-dom'
-import Validations from './Validations'
+import React from 'react';
+import { Redirect } from 'react-router-dom';
+import {
+  Form,
+  Input,
+  Button
+} from 'antd';
 
-class Register extends Component {
+import AuthService from '../../services/AuthService';
+
+
+const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+const validations = {
+  email: (value) => {
+    let message;
+    if (!value) {
+      message = 'Email necesario';
+    } else if (!EMAIL_PATTERN.test(value)) {
+      message = 'Ups! Parece que este email no existe';
+    }
+    return message;
+  },
+  name: (value) => {
+    let message;
+    if (!value) {
+      message = 'name necesario';
+    } else if(value.length < 3 || value.length > 30) {
+        message = 'Mínimo 3 caracteres y máximo 30';
+    } 
+        return message;
+  },
+  password: (value) => {
+    let message;
+    if (!value) {
+      message = 'Password necesaria';
+    }
+    return message;
+  }
+  
+} 
+class Register extends React.Component {
   state = {
     user: {
       email: '',
-      password: '',
       name: '',
+      password: ''
     },
     errors: {},
     touch: {},
     isRegistered: false
   }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if (this.isValid()) {
+      AuthService.register(this.state.user)
+        .then(
+          (user) => this.setState({ isRegistered: true }),
+          (error) => {
+            const { message, errors } = error.response.data;
+              var nameField = '';
+                if (message === 'Email is already registered') {
+                  nameField = 'email';
+                } else {
+                  nameField = 'name';
+                }
+                  if(message && !errors) {
+                    this.setState({
+                      errors: {
+                        ...this.state.errors,
+                        ...errors,
+                        [nameField]: message
+                      }
+                    })
+                  } else {
+                    this.setState({
+                      errors: {
+                      ...this.state.errors,
+                      ...errors,
+                      }
+                    })
+                  }
+          }
+        )
+    }
+  }
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       user: {
         ...this.state.user,
-        [name]: value
+        [name] : value
       },
       errors: {
         ...this.state.errors,
-        [name]: Validations[name] && Validations[name](value)
+        [name]: validations[name] && validations[name](value)
       }
     })
-  }
-  
-  handleDate = (date) => {
-    this.setState({
-      user: {
-        ...this.state.user,
-        birthDate: date
-      }, 
-      errors: {...this.state.errors, birthDate: Validations.birthDate && Validations.birthDate(date)}
-    });
   }
 
   handleBlur = (event) => {
@@ -48,92 +109,87 @@ class Register extends Component {
       }
     })
   }
-  getValidationClassName = (attr) => {
-    const { errors, touch } = this.state
-    if (!touch[attr]){
-      return ''
-    } else if (errors[attr]){ 
-      return 'is-invalid'
+
+  // isEmpty = (obj) => {
+  //   for(var key in obj) {
+  //       if(obj.hasOwnProperty(key))
+  //           return false;
+  //   }
+  //   return true;
+  // }
+
+  isValid = () => {
+    // if(this.isEmpty(this.state.errors)) {
+    //   return false;
+    // } else {
+        return !Object.keys(this.state.user)
+          .some(attr => this.state.errors[attr])
     }
-    return 'is-valid'
-  }
-
-  isValid = () => !Object.keys(this.state.user).some(attr => this.state.errors[attr])
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    if (this.isValid()) {
-      AuthService.register(this.state.user)
-        .then(
-          (user) => this.setState({ isRegistered: true }),
-          (error) => {
-            const { message, errors } = error.response.data;
-            this.setState({
-              errors: {
-                ...this.state.errors,
-                ...errors,
-                email: !errors && message
-              }
-            })
-          }
-        )
-    }
-  }
-
-
+  // }
 
   render() {
-    const { isRegistered, errors, user, touch } =  this.state;
+    console.log(this.state)
+    const formItemLayout = {
+      labelCol: {
+        xs: { span: 24 },
+        sm: { span: 8 }
+      },
+      wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 16 }
+      }
+    };
+    const tailFormItemLayout = {
+      wrapperCol: {
+        xs: {
+          span: 24,
+          offset: 0
+        },
+        sm: {
+          span: 16,
+          offset: 8
+        }
+      }
+    };
+    
+    const { user, errors, isRegistered } =  this.state;
     if (isRegistered) {
-      return (<Redirect to="/login" />)
+      return <Redirect to="/login" />
     }
 
-
     return (
-      <div className="box mx-auto">
-        <div className="row">
-          <div className="col-6">
-            <h3>Sign up</h3>
-            <form id="register-form" className="mt-4" onSubmit={this.handleSubmit}>
-              <FormField
-                label="email"
-                name="email"
-                onBlur={this.handleBlur}
-                value={user.email}
-                onChange={this.handleChange}
-                touch={touch.email}
-                error={errors.email}
-                inputType="text"
-                validationClassName={this.getValidationClassName('email')} />                            
-              <FormField
-                label="Name"
-                name="name"
-                inputType="text"
-                value={user.name}
-                touch={touch.name}
-                error={errors.name}
-                onChange={this.handleChange}
-                onBlur={this.handleBlur}
-                validationClassName={this.getValidationClassName('name')} /> 
-              <FormField
-                label="password"
-                name="password"
-                onBlur={this.handleBlur}
-                value={user.password}
-                onChange={this.handleChange}
-                touch={touch.password}
-                error={errors.password}
-                inputType="password"
-                validationClassName={this.getValidationClassName('password')} /> 
-              
-            </form>
-          </div>
-          <div className="col-6 pt-4">
-            <button className="btn btn-black" form="register-form" type="submit" disabled={!this.isValid()}> Create the Account</button>
-          </div>
+      <Form {...formItemLayout} onSubmit={this.handleSubmit} >
+        <Form.Item label="E-mail">
+        <div className={`ant-form-item-control ${errors.email ? 'has-error' : ''}`}>
+          <Input 
+            type="email" name="email" onChange={this.handleChange} value={user.email} 
+            placeholder="Introduce Email"
+          />
+          <div className="ant-form-explain">{ errors.email }</div>
         </div>
-      </div>
-    );
+        </Form.Item>
+        <Form.Item label="name">
+        <div className={`ant-form-item-control ${errors.name ? 'has-error' : ''}`}>
+          <Input type="text" name="name" onChange={this.handleChange} onBlur={this.handleBlur}value={user.name} placeholder="Elige un name"/>
+            <div className="ant-form-explain">{ errors.name }</div>
+        </div>
+        </Form.Item>
+        <Form.Item label="Password">
+        <div className={`ant-form-item-control ${errors.password ? 'has-error' : ''}`}>
+          <Input type="password" name="password" onChange={this.handleChange} onBlur={this.handleBlur} value={user.password} placeholder="Introduce Password"/>
+            <div className="ant-form-explain">{ errors.password }</div>
+        </div>
+        </Form.Item>
+        <Form.Item {...tailFormItemLayout} >
+          <Button type="primary" disabled={!this.isValid()} htmlType="submit">
+            Resgístrame
+          </Button>
+        </Form.Item>
+      
+      </Form>
+    )
   }
+
 }
-export default Register
+  
+export default Register;

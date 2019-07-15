@@ -24,12 +24,12 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route exact path="/login" component={Login}/>
           <Route exact path="/register" component={Register}/>
+          <Route path="/parking/:id/fav" component={FavForm}/>
           <Route path="/parking" component={Parking}/>
           <Route path="/parking/WhereGApi" component={WhereGApi}/>
           <Route path="/parking/:id" component={DetailsP}/>
           <Route path="/profile" component={User}/>
           <Route path="/fav" component={MyFavs}/>
-          <Route path="/parkingId/fav" component={FavForm}/>
           <Route exact path="/" component={() => (
             <Redirect to="/home" />
           )} />

@@ -28,11 +28,11 @@ class MyFavs extends Component{
         {this.state.parking.map((e,i)=>(
           <div className="li-parkingsix">
               <li style={{width: '100%', border: '1px solid black'}} key={i}> 
-                  <Link key={i} to={`/parking/${e.id}/`}>{e.parking && e.parking.name}</Link>
+                  <Link key={i} to={`/parking/${e._id}/`}>{e.parking && e.parking.name}</Link>
+                  <div><Link to={`/parking/${e._id}/fav`}>Edit</Link></div>
               </li>
           </div>
           ))}
-            <Link to="/parking/:id">Edit</Link>
         </ul>
       </article>
     )

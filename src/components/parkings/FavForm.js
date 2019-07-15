@@ -18,6 +18,16 @@ class FavForm extends React.Component {
     goToFav: false,
     touch: {}
   }
+
+  componentDidMount() {
+    ParkingService.editFavorite()
+      .then(({data}) => {
+        console.log(data)
+        this.setState({title: data})
+      })
+      .catch(err => console.log(err))
+    }
+
 //corre cada vez que una tecla es oprimida para actualizar el estado de React
   handleChange = (event) => {
     const { name, value } = event.target
@@ -60,10 +70,9 @@ class FavForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-
-    ParkingService.getParkings(this.state.data).then(
+    ParkingService.editFavorite(this.props.match.params.id).then(
       () => {        
-        this.setState({ goToFav: true })
+        this.setState({ editFavorite: true })
       },
       error => {
         // Advanced way to show server errors in the form!
@@ -83,7 +92,7 @@ class FavForm extends React.Component {
   }
 
   render () {
-    if (this.state.goToFav) {
+    if (this.state.editFavorite) {
       return <Redirect to="/"/>
     }
 
@@ -107,7 +116,9 @@ class FavForm extends React.Component {
             validationClassName={this.getValidationClassName('title')} />
         
           
-            <Link to="/parking/:id">Edit</Link>
+        <button type="submit"
+            className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}
+            disabled={hasErrors}>Save</button>
           <button type="submit"
             className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}
             disabled={hasErrors}>Delete</button>

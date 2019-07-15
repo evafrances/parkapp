@@ -30,7 +30,10 @@ class DetailsP extends React.Component {
     if (id !== '') {
       ParkingService.getYourPark(id) //la data, los datos del parking
       .then(result => { // [...] {..}
-        this.setState({park: result.data})
+        this.setState({
+          park: result.data,
+          // isFavorite: result.data.isFavorite 
+        }) //! <= aqui debe llegar si es favorito o no
         console.log(result.data)
       })
       .catch(err => console.log(err))

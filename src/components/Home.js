@@ -3,7 +3,7 @@ import './nav.css';
 import Header from './misc/Header';
 import { Link } from 'react-router-dom';
 import ParkingService from '../services/ParkingService';
-import { Row, Col } from 'antd';
+import { Row, Col, Avatar } from 'antd';
 import './parkings.css';
 
 
@@ -29,9 +29,6 @@ class Home extends Component{
 
   render(){
     return (
-
-      
-
       <article className="Home">
         <div className="jumbotron container">
         <div className="div-header">
@@ -43,7 +40,9 @@ class Home extends Component{
         {this.state.parking.map((e,i)=>(
           <div className="li-parkingsix">
               <li key={i}> 
-                  <Link key={i} to={`/parking/${e.id}/`}>{e.name}</Link>
+                  <Link key={i} to={`/parking/${e.id}/`}>{e.name}
+                  <Avatar style={{ color: getRandomColor(), backgroundColor: getRandomColor()}}>P</Avatar>
+                  </Link>
               
               
             {/* //   <div className="image-parent">
@@ -61,3 +60,11 @@ class Home extends Component{
 
 export default Home
 
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}

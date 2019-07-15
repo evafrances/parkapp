@@ -59,7 +59,7 @@ class Login extends React.Component {
       })
   } else {
         if(this.isValid()) {
-          authService.login(this.state.user)
+          authService.authenticate(this.state.user)
             .then(
               (user) => {
                 console.log(user + 'hola')

@@ -84,9 +84,9 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) => {
             defaultCenter={{ lat: 40.434154, lng: -3.598831 }}>
         
             {props.data.map((el, i) => {
-                console.log(el.price)
                 return (
-                <Marker key={i} position={{ lat: el.location[0], lng: el.location[1] }} />
+                <Marker icon={el.available ? '/green-box.svg': '/red-box.svg'}
+                    label={`${el.price.toFixed(2).toString()} €/h`} onClick={()=>props.detailsInfo(el.id)} key={i} position={{ lat: el.location[0], lng: el.location[1] }} />
             )})}
         </GoogleMap>
     )

@@ -1,6 +1,6 @@
 import React from 'react';
 import ParkingService from '../../services/ParkingService'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import FormField from '../misc/FormField';
 
 const validators = {
@@ -106,9 +106,11 @@ class FavForm extends React.Component {
             inputType="text"
             validationClassName={this.getValidationClassName('title')} />
         
+          
+            <Link to="/parking/:id">Edit</Link>
           <button type="submit"
             className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}
-            disabled={hasErrors}>Save</button>
+            disabled={hasErrors}>Delete</button>
         </form>
       </article>
     )

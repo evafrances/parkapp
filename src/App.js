@@ -9,6 +9,8 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import WhereGApi from './components/misc/WhereGApi';
 import User from './components/misc/User';
+import MyFavs from './components/parkings/MyFavs';
+import FavForm from './components/parkings/FavForm';
 
 // import User from './components/User';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
@@ -26,6 +28,8 @@ function App() {
           <Route path="/parking/WhereGApi" component={WhereGApi}/>
           <Route path="/parking/:id" component={DetailsP}/>
           <Route path="/profile" component={User}/>
+          <Route path="/fav" component={MyFavs}/>
+          <Route path="/parkingId/fav" component={FavForm}/>
           <Route exact path="/" component={() => (
             <Redirect to="/home" />
           )} />

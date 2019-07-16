@@ -1,9 +1,10 @@
 import React from 'react'
 import ParkingService from '../../services/ParkingService'
+import MailService from '../../services/MailService'
 import { Card } from 'antd';
 import '../parkings.css';
 import { Collapse } from 'antd';
-import { Button, Icon } from 'antd';
+import { Icon } from 'antd';
 import {withAuthContext} from './../../contexts/AuthStore'
 
 const { Panel } = Collapse;
@@ -53,6 +54,17 @@ class DetailsP extends React.Component {
     })
   }
 
+    sendMail = () => {
+      MailService.postMail({
+        parking: this.state.park._id
+      })
+      .then(result => {
+        console.log(result)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
 
 render() {
     if (!this.state.park) 
@@ -66,7 +78,7 @@ render() {
             <p>Timetable:{this.state.park.timetable}</p> {/*inventarme horarios */}
             <p>Available Places:{this.state.park.places && this.state.park.places.toFixed(0)}</p> {/*inventarme plazas libres */}
           {/*pintar como fav, en el modelo de parking?, se añadiría a los Parkings del usuario, de ahí podrá editar para cambiar nombre */}
-          <a href="user/123" className="active">Reserve a park</a>
+          <p onClick={this.sendMail} className="active">Reserve a park</p>
           <div>
             <Icon type="heart" onClick={this.onFavorite}  theme={this.state.isFavorite === true && 'twoTone'} twoToneColor="#eb2f96" />
           </div>

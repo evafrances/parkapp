@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './components/Home';
-import axios from 'axios';
+// import axios from 'axios';
 import './App.css';
 import DetailsP from './components/parkings/DetailsP';
 import Parking from './components/Parking';
@@ -13,7 +13,7 @@ import MyFavs from './components/parkings/MyFavs';
 import FavForm from './components/parkings/FavForm';
 
 // import User from './components/User';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+// import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 
 function App() {

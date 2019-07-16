@@ -3,7 +3,8 @@ import './nav.css';
 import Header from './misc/Header';
 import { Link } from 'react-router-dom';
 import ParkingService from '../services/ParkingService';
-import { Row, Col, Avatar } from 'antd';
+// import { Row, Col, Avatar } from 'antd';
+import { Avatar } from 'antd';
 import './parkings.css';
 
 

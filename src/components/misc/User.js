@@ -10,7 +10,7 @@ class User extends Component{
     return(
     <Menu>
       <Menu.Item key="0">
-        <a href="http://www.alipay.com/">Profile</a>
+        <a href="/profile">Profile</a>
       </Menu.Item>
       <Menu.Item key="2">
         <a href="http://www.alipay.com/">My credit cards</a>

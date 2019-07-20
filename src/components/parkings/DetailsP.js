@@ -57,16 +57,22 @@ class DetailsP extends React.Component {
 
     sendMail = () => {
       MailService.postMail({
-        parking: this.state.park._id
+        parking: this.state.park.id
       })
       .then(result => {
         console.log(result)
+        this.setState({
+          park: {
+            ...this.state.park,
+            places: this.state.park.places - 1
+          }
+        }, () => console.log(this.state))
       })
       .catch(err => {
         console.log(err)
       })
     }
-
+    
 render() {
     if (!this.state.park) 
       return <div>Loading...</div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import {withAuthContext} from '../../contexts/AuthStore'
 import {
     Form,
     Input,

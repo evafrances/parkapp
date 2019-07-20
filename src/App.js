@@ -8,6 +8,7 @@ import Parking from './components/Parking';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import User from './components/misc/User';
+import Profile from './components/auth/Profile';
 import MyFavs from './components/parkings/MyFavs';
 import FavForm from './components/parkings/FavForm';
 import PrivateRoute from './guards/PrivateRoute';
@@ -25,11 +26,13 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route exact path="/login" component={Login}/>
           <Route exact path="/register" component={Register}/>
-          <Route  path="/parking/:id/fav" component={FavForm}/>
-          <Route path="/parking" component={Parking}/>
-          <Route path="/parking/:id" component={DetailsP}/>
-          <PrivateRoute exact path="/profile" component={User}/>
-          <Route path="/fav" component={MyFavs}/>
+          <Route exact path="/parking/:id/fav" component={FavForm}/>
+          <Route exact path="/parking" component={Parking}/>
+          <Route exact path="/parking/:id" component={DetailsP}/>
+          {/* <PrivateRoute exact path="/profile" component={User}/> */}
+          <Route exact path="/profile" component={User}/>
+          <Route exact path="/fav" component={MyFavs}/>
+          <PrivateRoute exact path="/my-profile" component={Profile}/>
           <Route exact path="/" component={() => (
             <Redirect to="/home" />
           )} />

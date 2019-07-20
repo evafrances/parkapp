@@ -14,12 +14,12 @@ class Header extends Component{
     console.log(this.props)
     const content = (
       <div className="list-user">
-        <Link to="/profile">Profile</Link>
+        <Link to="/my-profile">Profile</Link>
         <Link to="http://www.alipay.com/">My credit cards</Link>
         <Link to="http://www.taobao.com/">Activity register</Link>
         <Link to="http://www.alipay.com/">Invite your friends</Link>
         <Link to="/fav">Favorite Parkings</Link>
-        <Link onClick={()=>this.props.onUserChange()}>Logout</Link>
+        <Link to="/login" onClick={()=>this.props.onUserChange()}>Logout</Link>
       </div>
     );
 

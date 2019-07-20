@@ -33,6 +33,7 @@ class DetailsP extends React.Component {
       .then(result => { // [...] {..}
         this.setState({
           park: result.data,
+          isFavorite: false
           // isFavorite: result.data.isFavorite 
         }) //! <= aqui debe llegar si es favorito o no
         console.log(result.data)
@@ -42,8 +43,8 @@ class DetailsP extends React.Component {
     }
 
     onFavorite = () => {
-      const id = this.props.idDetailsParking;
-      ParkingService.addFavorite(id)
+      if (!this.state.park.id) return;
+      ParkingService.addFavorite(this.state.park.id)
     .then(result => {
       this.setState({isFavorite: true})
       console.log(result.data)
@@ -72,18 +73,18 @@ render() {
     
     return (
       <div>
-        <Card title="Parking details" style={{ width: 400 }}>
-          <p>Name:{this.state.park.name}</p> {/*adrdress es un objeto del q solo me interesa la dirección */}
-            <p>Price/h:{this.state.park.price && this.state.park.price.toFixed(2)}</p> {/*inventarme precios */}
-            <p>Timetable:{this.state.park.timetable}</p> {/*inventarme horarios */}
-            <p>Available Places:{this.state.park.places && this.state.park.places.toFixed(0)}</p> {/*inventarme plazas libres */}
+        <Card title="Parking details" style={{ width: 420 }}>
+          <div className="div-pd"><p className="p-details">Name:</p><p>{this.state.park.name}</p></div> {/*adrdress es un objeto del q solo me interesa la dirección */}
+            <div className="div-pd"><p className="p-details">Price/h:</p><p>{this.state.park.price && this.state.park.price.toFixed(2)}</p></div> {/*inventarme precios */}
+            <div className="div-pd"><p className="p-details">Timetable:</p><p>{this.state.park.timetable}</p></div> {/*inventarme horarios */}
+            <div className="div-pd"><p className="p-details">Available Places:</p><p>{this.state.park.places && this.state.park.places.toFixed(0)}</p></div> {/*inventarme plazas libres */}
           {/*pintar como fav, en el modelo de parking?, se añadiría a los Parkings del usuario, de ahí podrá editar para cambiar nombre */}
-          <p onClick={this.sendMail} className="active">Reserve a park</p>
+          <p className="p-reserve" onClick={this.sendMail}>Reserve a park</p>
           <div>
             <Icon type="heart" onClick={this.onFavorite}  theme={this.state.isFavorite === true && 'twoTone'} twoToneColor="#eb2f96" />
           </div>
           <Collapse defaultActiveKey={['1']} onChange={callback}>
-            <Panel header="Comments">
+            <Panel className="panel-comments" header="Comments">
               <p>{text}</p>
               <p>{text}</p>
             </Panel>

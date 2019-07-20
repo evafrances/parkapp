@@ -14,7 +14,6 @@ class MyFavs extends Component{
   componentDidMount() {
     ParkingService.getFavPark()
       .then(({data}) => {
-        console.log(data)
         this.setState({parking: data})
       })
       .catch(err => console.log(err))
@@ -28,8 +27,8 @@ class MyFavs extends Component{
         {this.state.parking.map((e,i)=>(
           <div className="li-parkingsix">
               <li style={{width: '100%', border: '1px solid black'}} key={i}> 
-                  <Link key={i} to={`/parking/${e._id}/`}>{e.parking && e.parking.name}</Link>
-                  <div><Link to={`/parking/${e._id}/fav`}>Edit</Link></div>
+                  <Link key={i} to={`/parking/${e.parking.id}/`}>{e.parking && e.name || e.parking.name}</Link>
+                  <div><Link to={`/parking/${e.parking.id}/fav`}>Edit</Link></div>
               </li>
           </div>
           ))}

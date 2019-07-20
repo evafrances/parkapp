@@ -20,13 +20,7 @@ class FavForm extends React.Component {
   }
 
   componentDidMount() {
-    ParkingService.editFavorite()
-      .then(({data}) => {
-        console.log(data)
-        this.setState({title: data})
-      })
-      .catch(err => console.log(err))
-    }
+  }
 
 //corre cada vez que una tecla es oprimida para actualizar el estado de React
   handleChange = (event) => {
@@ -70,7 +64,7 @@ class FavForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    ParkingService.editFavorite(this.props.match.params.id).then(
+    ParkingService.editFavorite(this.props.match.params.id, this.state.data.title).then(
       () => {        
         this.setState({ editFavorite: true })
       },

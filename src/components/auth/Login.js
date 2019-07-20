@@ -118,6 +118,7 @@ class Login extends React.Component {
     console.log(this.state)
     const { user, errors, isLogged }  = this.state;
     if(isLogged) {
+      debugger
       return <Redirect to={`/user/${user.id}`}/>
     }
     return (

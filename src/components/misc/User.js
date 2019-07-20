@@ -10,10 +10,7 @@ class User extends Component{
     return(
     <Menu>
       <Menu.Item key="0">
-        <a href="http://www.alipay.com/">User name</a>
-      </Menu.Item>
-      <Menu.Item key="1">
-        <a href="http://www.taobao.com/">Edit profile</a>
+        <a href="http://www.alipay.com/">Profile</a>
       </Menu.Item>
       <Menu.Item key="2">
         <a href="http://www.alipay.com/">My credit cards</a>
@@ -25,7 +22,7 @@ class User extends Component{
         <a href="http://www.alipay.com/">Invite your friends</a>
       </Menu.Item>
       <Menu.Item key="3">
-        <a href="/myFavs">Favorite Parkings</a>
+        <a href="/fav">Favorite Parkings</a>
       </Menu.Item>
       <Menu.Item key="3">
         <a href="#">Logout</a>

@@ -34,9 +34,10 @@ class Home extends Component{
         <div className="jumbotron container">
         <div className="div-header">
           <h1 className="display-4">Move with freedom</h1>
+          <div className="line-header"></div>
             <Header/>
           </div>
-          <p>Parking for your vehicles</p>
+          <p className="p-parkingFor">Parking for your vehicles</p>
         <ul className="ul-parkingsix">
         {this.state.parking.map((e,i)=>(
           <div className="li-parkingsix">

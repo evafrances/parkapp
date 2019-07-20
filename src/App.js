@@ -7,10 +7,11 @@ import DetailsP from './components/parkings/DetailsP';
 import Parking from './components/Parking';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import WhereGApi from './components/misc/WhereGApi';
 import User from './components/misc/User';
 import MyFavs from './components/parkings/MyFavs';
 import FavForm from './components/parkings/FavForm';
+import PrivateRoute from './guards/PrivateRoute';
+
 
 // import User from './components/User';
 // import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
@@ -24,11 +25,10 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route exact path="/login" component={Login}/>
           <Route exact path="/register" component={Register}/>
-          <Route path="/parking/:id/fav" component={FavForm}/>
+          <Route  path="/parking/:id/fav" component={FavForm}/>
           <Route path="/parking" component={Parking}/>
-          <Route path="/parking/WhereGApi" component={WhereGApi}/>
           <Route path="/parking/:id" component={DetailsP}/>
-          <Route path="/profile" component={User}/>
+          <PrivateRoute exact path="/profile" component={User}/>
           <Route path="/fav" component={MyFavs}/>
           <Route exact path="/" component={() => (
             <Redirect to="/home" />

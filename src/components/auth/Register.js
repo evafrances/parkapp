@@ -30,6 +30,52 @@ const validations = {
     } 
         return message;
   },
+  // surname: (value) => {
+  //   let message;
+  //   if (!value) {
+  //     message = 'surname necesario';
+  //   } else if(value.length < 3 || value.length > 30) {
+  //       message = 'Mínimo 3 caracteres y máximo 30';
+  //   } 
+  //       return message;
+  // },
+  // address: (value) => {
+  //   let message;
+  //   if (!value) {
+  //     message = 'address necesario';
+  //   } else if(value.length < 3 || value.length > 30) {
+  //       message = 'Mínimo 3 caracteres y máximo 30';
+  //   } 
+  //       return message;
+  // },
+  // country: (value) => {
+  //   let message;
+  //   if (!value) {
+  //     message = 'country necesaria';
+  //   }
+  //   return message;
+  // },
+  // city: (value) => {
+  //   let message;
+  //   if (!value) {
+  //     message = 'city necesaria';
+  //   }
+  //   return message;
+  // },
+  // cp: (value) => {
+  //   let message;
+  //   if (!value) {
+  //     message = 'CP necesaria';
+  //   }
+  //   return message;
+  // },
+  // cars: (value) => {
+  //   let message;
+  //   if (!value) {
+  //     message = 'cars necesaria';
+  //   }
+  //   return message;
+  // },
   password: (value) => {
     let message;
     if (!value) {
@@ -44,6 +90,12 @@ class Register extends React.Component {
     user: {
       email: '',
       name: '',
+      // surname: '',
+      // address: '',
+      // country: '',
+      // city: '',
+      // cp: '',
+      // cars: '',
       password: ''
     },
     errors: {},
@@ -174,6 +226,37 @@ class Register extends React.Component {
             <div className="ant-form-explain">{ errors.name }</div>
         </div>
         </Form.Item>
+        {/* <Form.Item label="surname">
+        <div className={`ant-form-item-control ${errors.surname ? 'has-error' : ''}`}>
+          <Input type="surname" name="surname" onChange={this.handleChange} onBlur={this.handleBlur} value={user.surname} placeholder="Introduce surname"/>
+            <div className="ant-form-explain">{ errors.surname }</div>
+        </div>
+        </Form.Item>
+        <Form.Item label="address">
+        <div className={`ant-form-item-control ${errors.address ? 'has-error' : ''}`}>
+          <Input type="address" name="address" onChange={this.handleChange} onBlur={this.handleBlur} value={user.address} placeholder="Introduce address"/>
+            <div className="ant-form-explain">{ errors.address }</div>
+        </div>
+        </Form.Item>
+        <Form.Item label="country">
+        <div className={`ant-form-item-control ${errors.country ? 'has-error' : ''}`}>
+          <Input type="country" name="country" onChange={this.handleChange} onBlur={this.handleBlur} value={user.country} placeholder="Introduce country"/>
+            <div className="ant-form-explain">{ errors.country }</div>
+        </div>
+        </Form.Item>
+        <Form.Item label="city">
+        <div className={`ant-form-item-control ${errors.city ? 'has-error' : ''}`}>
+          <Input type="city" name="city" onChange={this.handleChange} onBlur={this.handleBlur} value={user.city} placeholder="Introduce city"/>
+            <div className="ant-form-explain">{ errors.city }</div>
+        </div>
+        </Form.Item>
+        <Form.Item label="cp">
+        <div className={`ant-form-item-control ${errors.cp ? 'has-error' : ''}`}>
+          <Input type="cp" name="cp" onChange={this.handleChange} onBlur={this.handleBlur} value={user.cp} placeholder="Introduce cp"/>
+            <div className="ant-form-explain">{ errors.cp }</div>
+        </div>
+        </Form.Item> */}
+        
         <Form.Item label="Password">
         <div className={`ant-form-item-control ${errors.password ? 'has-error' : ''}`}>
           <Input type="password" name="password" onChange={this.handleChange} onBlur={this.handleBlur} value={user.password} placeholder="Introduce Password"/>

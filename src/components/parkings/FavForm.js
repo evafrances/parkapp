@@ -64,7 +64,6 @@ class FavForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    debugger
     ParkingService.editFavorite(this.props.match.params.id, this.state.data.title).then(
       () => {        
         this.setState({ editFavorite: true })

@@ -117,6 +117,49 @@
 .b-parkings{
     background-color: #fff;
 }
+.ul-parkingsix{
+    padding: 0 50px;
+}
+.ul-parkingsix li{
+    background: #fff;
+}
+.li-parkingsix a {
+    color: rgb(237, 103, 81);
+}
+.li-parkingsix a.d-park{
+    color: #000;
+}
+.display-4 {
+    color: rgb(237, 103, 81);
+    font-size: 2em;
+    text-align: left;
+    width: 100%;
+    padding: 20px 136px 20px 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    background: rgb(19, 47, 62);
+}
+.form-group label{
+    display: block;
+}
+.favForm form {
+    background: rgb(19, 47, 62);
+    margin-top: 30px;
+    padding: 40px;
+}
+.form-group label {
+    display: block;
+    color: #fff;
+    font-size: 1.2em;
+}
+.form-group button.btn.btn-danger {
+    color: rgb(237, 103, 81);
+    font-size: 1.2em;
+}
+.form-group input {
+    width: 80%;
+}
+
 /* .ant-form {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;

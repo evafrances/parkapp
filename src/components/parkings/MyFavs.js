@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import FormField from '../misc/FormField';
+import '../parkings.css';
 import ParkingService from '../../services/ParkingService'
 
 
@@ -27,8 +28,8 @@ class MyFavs extends Component{
         <ul style={{width: '100%', display:'flex', flexDirection: 'column'}} className="ul-parkingsix">
         {this.state.parking.map((e,i)=>(
           <div className="li-parkingsix" key={i}>
-              <li style={{width: '100%', border: '1px solid black'}} key={i}>
-                  <Link key={i} to={`/parking/${e.id}/`}>{e.name}</Link>
+              <li style={{width: '100%'}} key={i}>
+                  <Link className="d-park" key={i} to={`/parking/${e.id}/`}>{e.name}</Link>
                   <div><Link to={`/parking/${e.id}/fav`}>Edit</Link></div>
               </li>
           </div>

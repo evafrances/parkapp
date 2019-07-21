@@ -30,6 +30,7 @@ form.ant-form.ant-form-horizontal.register-form {
 }
 form.ant-form.ant-form-horizontal.login-form {
     padding: 30px;
+    background: rgb(115, 158, 170);
 }
 form.ant-form.ant-form-horizontal.Profile-form{
     padding: 30px;
@@ -102,4 +103,19 @@ i.arrow-right svg {
     border-radius: 100px;
     padding: 8px;
     border: 4px solid rgb(237, 103, 86);
+}
+.ant-form-item-control a {
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    -webkit-text-decoration-skip: objects;
+}
+.ant-form.ant-form-horizontal.Profile-form{
+    background-image: url(/background.jpg);
+    background-repeat: space;
+    background-size: 139px;
 }

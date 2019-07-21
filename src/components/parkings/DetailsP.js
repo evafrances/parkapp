@@ -40,7 +40,7 @@ class DetailsP extends React.Component {
 
     onFavorite = () => {
       if (!this.state.park.id) return;
-      ParkingService.addFavorite(this.state.park.id)
+      ParkingService.addFavorite(this.state.park.id, this.state.park.name)
     .then(result => {
       this.setState({isFavorite: true})
       console.log(result.data)

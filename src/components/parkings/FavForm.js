@@ -64,6 +64,7 @@ class FavForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    debugger
     ParkingService.editFavorite(this.props.match.params.id, this.state.data.title).then(
       () => {        
         this.setState({ editFavorite: true })
@@ -110,12 +111,12 @@ class FavForm extends React.Component {
             validationClassName={this.getValidationClassName('title')} />
         
           
-        <button type="submit"
+        <button type="submit" onClick={this.handleSubmit}
             className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}
             disabled={hasErrors}>Save</button>
-          <button type="submit"
+          {/* <button type="submit"
             className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}
-            disabled={hasErrors}>Delete</button>
+            disabled={hasErrors}>Delete</button> */}
         </form>
       </article>
     )

@@ -34,7 +34,6 @@ class Profile extends React.Component {
       address: '',
       country: '',
       city: '',
-      cp: ''
       // !  <3
     },
     errors: {},
@@ -108,7 +107,6 @@ class Profile extends React.Component {
         address: user.address,
         country: user.country,
         city: user.city,
-        cp: user.CP,
       }
     })
   }
@@ -189,16 +187,6 @@ class Profile extends React.Component {
               type="city" name="city" onChange={this.handleChange} value={user.city}
             />
           <div className="ant-form-explain">{ errors.city }</div>
-        </div>
-        </Form.Item>
-        <Form.Item>
-        <p>CP</p>
-        <div className={`ant-form-item-control ${errors.cp ? 'has-error' : ''}`}>
-          <Input
-          disabled={isEdit}
-              type="cp" name="cp" onChange={this.handleChange} value={user.cp}
-            />
-          <div className="ant-form-explain">{ errors.cp }</div>
         </div>
         </Form.Item>
         <Form.Item>

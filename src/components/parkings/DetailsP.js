@@ -13,11 +13,7 @@ function callback(key) {
   console.log(key);
 }
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
+const text = `Stopping the vehicle and leaving it unoccupied is called parking. There are different types of parking. The most common types of parking are angle parking, perpendicular parking and parallel parking.`;
 
 
 class DetailsP extends React.Component {

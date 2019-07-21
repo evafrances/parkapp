@@ -26,7 +26,7 @@ class MyFavs extends Component{
         <ul style={{width: '100%', display:'flex', flexDirection: 'column'}} className="ul-parkingsix">
         {this.state.parking.map((e,i)=>(
           <div className="li-parkingsix">
-              <li style={{width: '100%', border: '1px solid black'}} key={i}> 
+              <li style={{width: '100%', border: '1px solid black'}} key={i}>
                   <Link key={i} to={`/parking/${e.parking.id}/`}>{e.parking && e.name || e.parking.name}</Link>
                   <div><Link to={`/parking/${e.parking.id}/fav`}>Edit</Link></div>
               </li>
@@ -39,4 +39,6 @@ class MyFavs extends Component{
 }
 
 export default MyFavs
+
+
 

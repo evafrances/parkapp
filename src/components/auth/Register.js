@@ -8,6 +8,8 @@ import {
 
 import AuthService from '../../services/AuthService';
 
+import './auth.css';
+
 
 const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
@@ -90,12 +92,6 @@ class Register extends React.Component {
     user: {
       email: '',
       name: '',
-      // surname: '',
-      // address: '',
-      // country: '',
-      // city: '',
-      // cp: '',
-      // cars: '',
       password: ''
     },
     errors: {},
@@ -210,7 +206,7 @@ class Register extends React.Component {
     }
 
     return (
-      <Form {...formItemLayout} onSubmit={this.handleSubmit} >
+      <Form {...formItemLayout} onSubmit={this.handleSubmit} className="register-form">
         <Form.Item label="E-mail">
         <div className={`ant-form-item-control ${errors.email ? 'has-error' : ''}`}>
           <Input 
@@ -220,7 +216,7 @@ class Register extends React.Component {
           <div className="ant-form-explain">{ errors.email }</div>
         </div>
         </Form.Item>
-        <Form.Item label="name">
+        <Form.Item label="Name">
         <div className={`ant-form-item-control ${errors.name ? 'has-error' : ''}`}>
           <Input type="text" name="name" onChange={this.handleChange} onBlur={this.handleBlur}value={user.name} placeholder="Elige un name"/>
             <div className="ant-form-explain">{ errors.name }</div>

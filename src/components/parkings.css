@@ -95,7 +95,8 @@
 .ant-collapse > .ant-collapse-item > .ant-collapse-header {
     position: relative;
     padding: 12px 16px;
-    padding-left: 65px;
+    text-align: center;
+    padding-left: 0;
     color: rgba(0, 0, 0, 0.85);
     line-height: 22px;
     cursor: pointer;
@@ -108,6 +109,13 @@
 .panel-comments .anticon svg {
     background-color: transparent;
     color: rgb(19, 47, 62);
+}
+.d-price{
+    color: #fff;
+    font-weight: bold;
+}
+.b-parkings{
+    background-color: #fff;
 }
 /* .ant-form {
     -webkit-box-sizing: border-box;

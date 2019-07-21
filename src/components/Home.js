@@ -37,6 +37,7 @@ class Home extends Component{
           <div className="line-header"></div>
             <Header/>
           </div>
+          <div className="b-parkings">
           <p className="p-parkingFor">Parking for your vehicles</p>
         <ul className="ul-parkingsix">
         {this.state.parking.map((e,i)=>(
@@ -54,6 +55,7 @@ class Home extends Component{
           </div>
           ))}
         </ul>
+        </div>
         </div>
       </article>
     )

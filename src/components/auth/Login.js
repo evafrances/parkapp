@@ -4,6 +4,8 @@ import authService from '../../services/AuthService';
 import { AuthContext, withAuthContext } from '../../contexts/AuthStore';
 
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import './auth.css';
+
 
 const validations = {
   username: (value) => {
@@ -117,7 +119,7 @@ class Login extends React.Component {
           <div className={`ant-form-item-control ${errors.username ? 'has-error' : ''}`}>
             <Input
               type="text" name="username" onChange={this.handleChange} value={user.username} 
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon className="iconlogin" type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
               placeholder="Email"
               />
             <div className="ant-form-explain">{ errors.username }</div>
@@ -127,7 +129,7 @@ class Login extends React.Component {
         <div className={`ant-form-item-control ${errors.password ? 'has-error' : ''}`}>
           <Input
               type="password" name="password" onChange={this.handleChange} value={user.password} 
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon className="iconlogin" type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
               placeholder="Password"
             />
           <div className="ant-form-explain">{ errors.password }</div>

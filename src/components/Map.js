@@ -1,5 +1,7 @@
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import React from 'react';
+import './parkings.css';
+
 // import Geocode from "react-geocode";
 
 
@@ -14,7 +16,7 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) => {
         
             {props.data.map((el, i) => {
                 return (
-                <Marker icon={el.available ? '/green-box.svg': '/red-box.svg'}
+                <Marker icon={el.available ? '/green-box.png': '/red-box.png'}
                     label={`${el.price.toFixed(2).toString()} €/h`} onClick={()=>props.detailsInfo(el.id)} key={i} position={{ lat: el.location[0], lng: el.location[1] }} />
             )})}
         </GoogleMap>

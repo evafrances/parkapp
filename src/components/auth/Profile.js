@@ -1,7 +1,9 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import authService from '../../services/AuthService';
-import {withAuthContext} from '../../contexts/AuthStore'
+import {withAuthContext} from '../../contexts/AuthStore';
+import { Link } from 'react-router-dom'
+import './auth.css';
 
 
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
@@ -30,7 +32,9 @@ class Profile extends React.Component {
       // surname: '',
       email: '',
       address: '',
-      city: ''
+      country: '',
+      city: '',
+      cp: ''
       // !  <3
     },
     errors: {},
@@ -102,7 +106,9 @@ class Profile extends React.Component {
         // surname: user.surname,
         email: user.email,
         address: user.address,
+        country: user.country,
         city: user.city,
+        cp: user.CP,
       }
     })
   }
@@ -143,48 +149,56 @@ class Profile extends React.Component {
     // console.log(user)
 
     return (
+      <div>
       <Form onSubmit={this.handleSubmit} className="Profile-form">
         <Form.Item>
+        <p>Name</p>
           <div className={`ant-form-item-control ${errors.username ? 'has-error' : ''}`}>
             <Input
             disabled={isEdit}
-              type="text" name="username" onChange={this.handleChange} value={user.username} 
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="Email"
+              type="text" name="username" onChange={this.handleChange} value={user.username}
               />
             <div className="ant-form-explain">{ errors.username }</div>
           </div>
         </Form.Item>
-        {/* <Form.Item>
-        <div className={`ant-form-item-control ${errors.password ? 'has-error' : ''}`}>
-          <Input
-              type="surname" name="surname" onChange={this.handleChange} value={user.surname} 
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="surname"
-            />
-          <div className="ant-form-explain">{ errors.surname }</div>
-        </div>
-        </Form.Item> */}
         <Form.Item>
+        <p>Address</p>
         <div className={`ant-form-item-control ${errors.address ? 'has-error' : ''}`}>
           <Input
           disabled={isEdit}
-              type="address" name="address" onChange={this.handleChange} value={user.address} 
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="address"
+              type="address" name="address" onChange={this.handleChange} value={user.address}
             />
           <div className="ant-form-explain">{ errors.address }</div>
         </div>
         </Form.Item>
         <Form.Item>
+        <p>Country</p>
+        <div className={`ant-form-item-control ${errors.country ? 'has-error' : ''}`}>
+          <Input
+          disabled={isEdit}
+              type="country" name="country" onChange={this.handleChange} value={user.country}
+            />
+          <div className="ant-form-explain">{ errors.country }</div>
+        </div>
+        </Form.Item>
+        <Form.Item>
+        <p>City</p>
         <div className={`ant-form-item-control ${errors.city ? 'has-error' : ''}`}>
           <Input
           disabled={isEdit}
-              type="city" name="city" onChange={this.handleChange} value={user.city} 
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="city"
+              type="city" name="city" onChange={this.handleChange} value={user.city}
             />
           <div className="ant-form-explain">{ errors.city }</div>
+        </div>
+        </Form.Item>
+        <Form.Item>
+        <p>CP</p>
+        <div className={`ant-form-item-control ${errors.cp ? 'has-error' : ''}`}>
+          <Input
+          disabled={isEdit}
+              type="cp" name="cp" onChange={this.handleChange} value={user.cp}
+            />
+          <div className="ant-form-explain">{ errors.cp }</div>
         </div>
         </Form.Item>
         <Form.Item>
@@ -195,8 +209,11 @@ class Profile extends React.Component {
             Save
           </Button>
           </Form.Item>
+          <Link to={`/`}><Icon className="arrow-right" type="arrow-right" /></Link>
       </Form>
+      </div>
     );
+    
   }
 }
 

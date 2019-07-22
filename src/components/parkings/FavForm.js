@@ -2,6 +2,7 @@ import React from 'react';
 import ParkingService from '../../services/ParkingService'
 import { Redirect, Link } from 'react-router-dom'
 import FormField from '../misc/FormField';
+import Header from '../misc/Header';
 
 const validators = {
   title: value => value.length > 3,
@@ -96,7 +97,7 @@ class FavForm extends React.Component {
 
     return (
       <article className="favForm">
-
+        <Header/>
         <form onSubmit={this.handleSubmit}>
           <FormField
             label="Title"

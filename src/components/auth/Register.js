@@ -19,7 +19,7 @@ const validations = {
     if (!value) {
       message = 'Email necesario';
     } else if (!EMAIL_PATTERN.test(value)) {
-      message = 'Ups! Parece que este email no existe';
+      message = 'Parece que este email no existe';
     }
     return message;
   },

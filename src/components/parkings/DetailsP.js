@@ -80,6 +80,8 @@ render() {
             <div className="div-pd"><p className="p-details">Price/h:</p><p>{this.state.park.price && this.state.park.price.toFixed(2)}</p></div> {/*inventarme precios */}
             <div className="div-pd"><p className="p-details">Timetable:</p><p>{this.state.park.timetable}</p></div> {/*inventarme horarios */}
             <div className="div-pd"><p className="p-details">Available Places:</p><p>{this.state.park.places && this.state.park.places.toFixed(0)}</p></div> {/*inventarme plazas libres */}
+            <div className="div-pd"><p className="p-details">Description:</p><p className="d-scroll">{this.state.park.description}</p></div> {/*inventarme plazas libres */}
+
           {/*pintar como fav, en el modelo de parking?, se añadiría a los Parkings del usuario, de ahí podrá editar para cambiar nombre */}
           <p className="p-reserve" onClick={this.sendMail}>Reserve a park</p>
           <div>

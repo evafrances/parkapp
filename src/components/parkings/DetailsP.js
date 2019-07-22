@@ -83,8 +83,8 @@ render() {
             <div className="div-pd"><p className="p-details">Description:</p><p className="d-scroll">{this.state.park.description}</p></div> {/*inventarme plazas libres */}
 
           {/*pintar como fav, en el modelo de parking?, se añadiría a los Parkings del usuario, de ahí podrá editar para cambiar nombre */}
+          <div className="des-heart">
           <p className="p-reserve" onClick={this.sendMail}>Reserve a park</p>
-          <div>
             <Icon type="heart" onClick={this.onFavorite}  theme={this.state.isFavorite === true && 'twoTone'} twoToneColor="#eb2f96" />
           </div>
           <Collapse defaultActiveKey={['1']} onChange={callback}>

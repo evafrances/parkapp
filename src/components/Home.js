@@ -3,8 +3,7 @@ import './nav.css';
 import Header from './misc/Header';
 import { Link } from 'react-router-dom';
 import ParkingService from '../services/ParkingService';
-// import { Row, Col, Avatar } from 'antd';
-import { Avatar } from 'antd';
+import { Row, Col } from 'antd';
 import './parkings.css';
 
 
@@ -30,22 +29,21 @@ class Home extends Component{
 
   render(){
     return (
+
+      
+
       <article className="Home">
         <div className="jumbotron container">
         <div className="div-header">
           <h1 className="display-4">Move with freedom</h1>
-          <div className="line-header"></div>
             <Header/>
           </div>
-          <div className="b-parkings">
-          <p className="p-parkingFor">Parking for your vehicles</p>
+          <p>Parking for your vehicles</p>
         <ul className="ul-parkingsix">
         {this.state.parking.map((e,i)=>(
           <div className="li-parkingsix">
               <li key={i}> 
-                  <Link key={i} to={`/parking/${e.id}/`}>{e.name}
-                  <Avatar style={{ color: getRandomColor(), backgroundColor: getRandomColor()}}>P</Avatar>
-                  </Link>
+                  <Link key={i} to={`/parking/${e.id}/`}>{e.name}</Link>
               
               
             {/* //   <div className="image-parent">
@@ -56,7 +54,6 @@ class Home extends Component{
           ))}
         </ul>
         </div>
-        </div>
       </article>
     )
   }
@@ -64,11 +61,3 @@ class Home extends Component{
 
 export default Home
 
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}

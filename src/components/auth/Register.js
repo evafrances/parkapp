@@ -8,19 +8,20 @@ import {
 
 import AuthService from '../../services/AuthService';
 
+// import './auth.css';
 
-const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+// const EMAIL_PATTERN = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 const validations = {
-  email: (value) => {
-    let message;
-    if (!value) {
-      message = 'Email necesario';
-    } else if (!EMAIL_PATTERN.test(value)) {
-      message = 'Ups! Parece que este email no existe';
-    }
-    return message;
-  },
+  // email: (value) => {
+  //   let message;
+  //   if (!value) {
+  //     message = 'Email necesario';
+  //   } else if (!EMAIL_PATTERN.test(value)) {
+  //     message = 'Parece que este email no existe';
+  //   }
+  //   return message;
+  // },
   name: (value) => {
     let message;
     if (!value) {
@@ -30,6 +31,7 @@ const validations = {
     } 
         return message;
   },
+  
   password: (value) => {
     let message;
     if (!value) {
@@ -158,7 +160,7 @@ class Register extends React.Component {
     }
 
     return (
-      <Form {...formItemLayout} onSubmit={this.handleSubmit} >
+      <Form {...formItemLayout} onSubmit={this.handleSubmit} className="register-form">
         <Form.Item label="E-mail">
         <div className={`ant-form-item-control ${errors.email ? 'has-error' : ''}`}>
           <Input 
@@ -168,12 +170,43 @@ class Register extends React.Component {
           <div className="ant-form-explain">{ errors.email }</div>
         </div>
         </Form.Item>
-        <Form.Item label="name">
+        <Form.Item label="Name">
         <div className={`ant-form-item-control ${errors.name ? 'has-error' : ''}`}>
           <Input type="text" name="name" onChange={this.handleChange} onBlur={this.handleBlur}value={user.name} placeholder="Elige un name"/>
             <div className="ant-form-explain">{ errors.name }</div>
         </div>
         </Form.Item>
+        {/* <Form.Item label="surname">
+        <div className={`ant-form-item-control ${errors.surname ? 'has-error' : ''}`}>
+          <Input type="surname" name="surname" onChange={this.handleChange} onBlur={this.handleBlur} value={user.surname} placeholder="Introduce surname"/>
+            <div className="ant-form-explain">{ errors.surname }</div>
+        </div>
+        </Form.Item>
+        <Form.Item label="address">
+        <div className={`ant-form-item-control ${errors.address ? 'has-error' : ''}`}>
+          <Input type="address" name="address" onChange={this.handleChange} onBlur={this.handleBlur} value={user.address} placeholder="Introduce address"/>
+            <div className="ant-form-explain">{ errors.address }</div>
+        </div>
+        </Form.Item>
+        <Form.Item label="country">
+        <div className={`ant-form-item-control ${errors.country ? 'has-error' : ''}`}>
+          <Input type="country" name="country" onChange={this.handleChange} onBlur={this.handleBlur} value={user.country} placeholder="Introduce country"/>
+            <div className="ant-form-explain">{ errors.country }</div>
+        </div>
+        </Form.Item>
+        <Form.Item label="city">
+        <div className={`ant-form-item-control ${errors.city ? 'has-error' : ''}`}>
+          <Input type="city" name="city" onChange={this.handleChange} onBlur={this.handleBlur} value={user.city} placeholder="Introduce city"/>
+            <div className="ant-form-explain">{ errors.city }</div>
+        </div>
+        </Form.Item>
+        <Form.Item label="cp">
+        <div className={`ant-form-item-control ${errors.cp ? 'has-error' : ''}`}>
+          <Input type="cp" name="cp" onChange={this.handleChange} onBlur={this.handleBlur} value={user.cp} placeholder="Introduce cp"/>
+            <div className="ant-form-explain">{ errors.cp }</div>
+        </div>
+        </Form.Item> */}
+        
         <Form.Item label="Password">
         <div className={`ant-form-item-control ${errors.password ? 'has-error' : ''}`}>
           <Input type="password" name="password" onChange={this.handleChange} onBlur={this.handleBlur} value={user.password} placeholder="Introduce Password"/>

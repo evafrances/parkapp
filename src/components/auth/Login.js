@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import authService from '../../services/AuthService';
-import { AuthContext } from '../../contexts/AuthStore';
+import { withAuthContext } from '../../contexts/AuthStore';
 
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+// import './../auth.css';
+
 
 const validations = {
   username: (value) => {
@@ -23,7 +25,6 @@ const validations = {
 } 
 
 class Login extends React.Component {
-
   state={
     user: {
       username:'',
@@ -62,15 +63,7 @@ class Login extends React.Component {
           authService.authenticate(this.state.user)
             .then(
               (user) => {
-                console.log(user + 'hola')
-                this.setState({ 
-                  user: {
-                    ...this.state.user,
-                    ...user,
-                    id: user.id
-                  },
-                  isLogged:true
-                })
+                this.props.onUserChange(user);
               },
               (error) => {
                 const { message, errors } = error.response.data;
@@ -115,10 +108,10 @@ class Login extends React.Component {
     }
 
   render() {
-    console.log(this.state)
-    const { user, errors, isLogged }  = this.state;
-    if(isLogged) {
-      return <Redirect to={`/user/${user.id}`}/>
+    // console.log(this.state)
+    const { user, errors }  = this.state;
+    if(this.props.isAuthenticated()) {
+      return <Redirect to={`/my-profile`}/>
     }
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
@@ -126,7 +119,7 @@ class Login extends React.Component {
           <div className={`ant-form-item-control ${errors.username ? 'has-error' : ''}`}>
             <Input
               type="text" name="username" onChange={this.handleChange} value={user.username} 
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon className="iconlogin" type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
               placeholder="Email"
               />
             <div className="ant-form-explain">{ errors.username }</div>
@@ -136,7 +129,7 @@ class Login extends React.Component {
         <div className={`ant-form-item-control ${errors.password ? 'has-error' : ''}`}>
           <Input
               type="password" name="password" onChange={this.handleChange} value={user.password} 
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon className="iconlogin" type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
               placeholder="Password"
             />
           <div className="ant-form-explain">{ errors.password }</div>
@@ -154,12 +147,5 @@ class Login extends React.Component {
   }
 }
 
-const LoginWithAuthContext = (loginProps) => {
-  return (
-    <AuthContext.Consumer>
-      {(consumerProps) => (<Login {...consumerProps} {...loginProps} />)}
-    </AuthContext.Consumer>
-  );
-}
 
-export default LoginWithAuthContext;
+export default withAuthContext(Login);

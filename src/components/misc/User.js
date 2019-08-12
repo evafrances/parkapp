@@ -1,7 +1,7 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 // import Header from '../components/Header'
 import {Link} from 'react-router-dom'
-import { Menu, Dropdown, Icon } from 'antd';
+import { Menu } from 'antd';
 
 
 class User extends Component{
@@ -10,25 +10,22 @@ class User extends Component{
     return(
     <Menu>
       <Menu.Item key="0">
-        <a href="http://www.alipay.com/">User name</a>
-      </Menu.Item>
-      <Menu.Item key="1">
-        <a href="http://www.taobao.com/">Edit profile</a>
+        <Link href="/my-profile">Profile</Link>
       </Menu.Item>
       <Menu.Item key="2">
-        <a href="http://www.alipay.com/">My credit cards</a>
+        <Link href="http://www.alipay.com/">My credit cards</Link>
       </Menu.Item>
       <Menu.Item key="3">
-        <a href="http://www.taobao.com/">Activity register</a>
+        <Link href="http://www.taobao.com/">Activity register</Link>
       </Menu.Item>
       <Menu.Item key="2">
-        <a href="http://www.alipay.com/">Invite your friends</a>
+        <Link href="http://www.alipay.com/">Invite your friends</Link>
       </Menu.Item>
       <Menu.Item key="3">
-        <a href="http://www.taobao.com/">Favorite Parkings</a>
+        <Link href="/fav">Favorite Parkings</Link>
       </Menu.Item>
       <Menu.Item key="3">
-        <a href="#">Logout</a>
+        <Link href="#">Logout</Link>
       </Menu.Item>
     </Menu>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import ParkingService from '../../services/ParkingService'
 import { Redirect } from 'react-router-dom'
 import FormField from '../misc/FormField';
+import Header from '../misc/Header';
 
 const validators = {
   title: value => value.length > 3,
@@ -18,6 +19,10 @@ class FavForm extends React.Component {
     goToFav: false,
     touch: {}
   }
+
+  componentDidMount() {
+  }
+
 //corre cada vez que una tecla es oprimida para actualizar el estado de React
   handleChange = (event) => {
     const { name, value } = event.target
@@ -60,10 +65,9 @@ class FavForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-
-    ParkingService.getParkings(this.state.data).then(
+    ParkingService.editFavorite(this.props.match.params.id, this.state.data.title).then(
       () => {        
-        this.setState({ goToFav: true })
+        this.setState({ editFavorite: true })
       },
       error => {
         // Advanced way to show server errors in the form!
@@ -83,7 +87,7 @@ class FavForm extends React.Component {
   }
 
   render () {
-    if (this.state.goToFav) {
+    if (this.state.editFavorite) {
       return <Redirect to="/"/>
     }
 
@@ -93,7 +97,7 @@ class FavForm extends React.Component {
 
     return (
       <article className="favForm">
-
+        <Header/>
         <form onSubmit={this.handleSubmit}>
           <FormField
             label="Title"
@@ -106,9 +110,13 @@ class FavForm extends React.Component {
             inputType="text"
             validationClassName={this.getValidationClassName('title')} />
         
-          <button type="submit"
+          
+        <button type="submit" onClick={this.handleSubmit}
             className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}
             disabled={hasErrors}>Save</button>
+          {/* <button type="submit"
+            className={`btn ${hasErrors ? 'btn-danger' : 'btn-success'}`}
+            disabled={hasErrors}>Delete</button> */}
         </form>
       </article>
     )

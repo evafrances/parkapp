@@ -1,6 +1,8 @@
+.ul-parkingsix{
+    padding: 0;
+}
 .li-parkingsix{
     list-style:none;
-    float: left;
 }
 .li-parkingsix a {
     color: #1890ff;
@@ -19,3 +21,164 @@
     zoom: 1;
     text-align: left;
 }
+.li-parkingsix a {
+    display: flex;
+    flex-direction: column-reverse;
+    color: rgb(61, 157, 161);
+    font-weight: bold;
+    font-size: 1.2em;
+    width: auto;
+    height: auto;
+    margin-bottom: 20px;
+}
+.li-parkingsix .ant-avatar-circle{
+    display: block;
+    margin: auto;
+}
+.li-parkingsix .ant-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 0;
+}
+.ant-avatar-string {
+    font-size: 3em;
+    margin-top: 13px;
+}
+.ant-breadcrumb {
+    background-color: rgb(19, 47, 62);
+}
+.div-map{
+    position: relative;
+}
+.div-details{
+    position: absolute;
+    bottom: 0;
+}
+.ant-card .ant-card-head {
+    color: rgb(237, 103, 81);
+    font-weight: bold;
+    font-size: 1.4em;
+    border-bottom: 1px solid rgb(48, 73, 86);
+}
+.ant-card .ant-card-head-title {
+    padding: 3px 0;
+}
+.ant-card .ant-card-body p {
+    color: #000;
+    font-size: 1.2em;
+    width: auto;
+    height: auto;
+    margin-bottom: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+.ant-card .ant-card-body .p-details{
+    color: rgb(61, 157, 161);
+    font-weight: bold;
+    font-size: 1.2em;
+    width: auto;
+    height: auto;
+    margin-bottom: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+.div-pd {
+    display: flex;
+}
+.ant-card .ant-card-body .p-reserve{
+    color: red;
+    text-decoration: underline;
+    margin: 10px 20px 15px;
+}
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    position: relative;
+    padding: 12px 16px;
+    text-align: center;
+    padding-left: 0;
+    color: rgba(0, 0, 0, 0.85);
+    line-height: 22px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    color: rgb(61, 157, 161);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.panel-comments .anticon svg {
+    background-color: transparent;
+    color: rgb(19, 47, 62);
+}
+.d-price{
+    color: #fff;
+    font-weight: bold;
+}
+.b-parkings{
+    background-color: #fff;
+}
+.ul-parkingsix{
+    padding: 0 50px;
+}
+.ul-parkingsix li{
+    background: #fff;
+}
+.li-parkingsix a {
+    color: rgb(237, 103, 81);
+}
+.li-parkingsix a.d-park{
+    color: #000;
+}
+.display-4 {
+    color: rgb(237, 103, 81);
+    font-size: 2em;
+    text-align: left;
+    width: 100%;
+    padding: 20px 136px 20px 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    background: rgb(19, 47, 62);
+}
+.form-group label{
+    display: block;
+}
+.favForm form {
+    background: rgb(19, 47, 62);
+    padding: 40px;
+}
+.form-group label {
+    display: block;
+    color: #fff;
+    font-size: 1.2em;
+}
+.form-group button.btn.btn-danger {
+    color: rgb(237, 103, 81);
+    font-size: 1.2em;
+}
+.form-group input {
+    width: 80%;
+}
+.ant-card .ant-card-body p.d-scroll{
+    overflow: scroll;
+    height: 60px;
+}
+.des-heart{
+    display: flex;
+    margin-top: 20px;
+}
+/* .ant-form {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    -webkit-font-feature-settings: 'tnum';
+    font-feature-settings: 'tnum', "tnum";
+    background: url(background.jpg);
+    /* background-color: rgba(30, 30, 30, 0.5); 
+    /* opacity: 7; */
+    /* background-color: rgba(0, 0, 0, 21.5); */
